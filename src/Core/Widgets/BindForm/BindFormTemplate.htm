@@ -1,0 +1,289 @@
+﻿<!-- Label (universal for all controls) -->
+<div id="label" type="text/x-jQuery-tmpl">
+    <label for="${key}" class="${css.label_class}" style="${css.label_style}">${localizedName}:</label>
+</div>
+
+<!-- Span (universal for all controls) -->
+<div id="span" type="text/x-jQuery-tmpl">
+    <span data-property="${key}" class="${css.class}" style="${css.style}"></span>
+</div>
+
+<!-- Validation -->
+<div id="validationMessage" type="text/x-jQuery-tmpl">
+    <div data-validation-message="${key}" class="${css.validationMessage_class}" style="${css.validationMessage_style}"></div>
+</div>
+
+<!-- String -->
+<div id="static" type="text/x-jQuery-tmpl">
+    <div data-property="${key}" class="${css.class}" style="${css.style}"></div>
+</div>
+
+<div id="stringControl" type="text/x-jQuery-tmpl">
+    <input type="text" id="${key}" data-property="${key}" class="${css.class}" placeholder="${placeholder}" style="${css.style}" data-validation-message="${validationText}" maxlength="${attribute.maxlength}" />
+</div>
+
+<div id="stringControlRead" type="text/x-jQuery-tmpl">
+    <input type="text" id="${key}" data-property="${key}" class="${css.class}" placeholder="${placeholder}" style="${css.style}" disabled="disabled" />
+</div>
+
+<div id="passwordControl" type="text/x-jQuery-tmpl">
+    <input type="password" id="${key}" data-property="${key}" class="${css.class}" placeholder="${placeholder}" style="${css.style}" />
+</div>
+
+<!-- Textarea -->
+<div id="textareaControl" type="text/x-jQuery-tmpl">
+    <textarea id="${key}" data-property="${key}" rows="3" cols="" class="${css.class}" style="${css.style}"></textarea>
+</div>
+
+<!-- Color -->
+<div id="colorControl" type="text/x-jQuery-tmpl">
+    <div class="colorContainer" class="${css.class}" style="${css.style}">
+        <input type="text" class="color" id="${key}" data-property="${key}" />
+        <div class="color_button">
+            <div class="color_bottom"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Date -->
+<div id="dateControl" type="text/x-jQuery-tmpl">
+   <input type="text" id="${key}" data-property="${key}" data-date-format="dd.mm.yyyy" placeholder="${placeholder}" class="${css.class}"  style="${css.style}">
+    {{if clearable}}
+        <a class="entityDeleteIco" onclick="$('input', $(this).parent()).val('');"><i class="icon-remove"></i></a>
+    {{/if}}
+    <a class="calendar" onclick="$('input', $(this).parent()).focus();"></a>
+</div>
+
+<!-- Int -->
+<div id="intControl" type="text/x-jQuery-tmpl">
+    <input type="number" min="{{if meta}}${meta.min}{{/if}}" max="{{if meta}}${meta.max}{{/if}}"
+        id="${key}" data-property="${key}" class="${css.class}" style="${css.style}" />
+</div>
+
+<!-- Double -->
+<div id="doubleControl" type="text/x-jQuery-tmpl">
+    <input type="number" step="any" data-property="${key}" class="${css.class}" style="${css.style}" />
+</div>
+
+<!-- ImageUpload -->
+<div id="imageUploadControl" type="text/x-jQuery-tmpl">
+    <div data-property-image-upload="${key}" class="${css.class}" style="${css.style}" data-provides="fileupload">         
+        <input type="hidden" name="${key}" data-property="${key}" maxlength="100000000"/>
+        <input type="hidden" name="${key}Name" data-property="${key}Name"/>
+        <input type="hidden" name="${key}Size" data-property="${key}Size"/>
+        <input type="hidden" name="${key}Type" data-property="${key}Type"/>
+        <!--<div class="fileupload-new thumbnail"></div>-->
+        <div class="fileupload-preview fileupload-exists thumbnail">
+            <img data-property-image-preview="${key}"/>
+        </div>
+        <span class="btn btn-file btn-black"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" name="${key}"/></span>
+        <span class="btn btn-file btn-black fileupload-exists" data-dismiss="fileupload">Remove</span>
+    </div>
+</div>
+
+<!-- ImageRead -->
+<div id="imageControlRead" type="text/x-jQuery-tmpl">
+    <div class="${css.class}" style="${css.style}">    
+        <input type="hidden" name="${key}" data-property="${key}" maxlength="100000000"/>
+        <div class="fileupload-preview fileupload-exists thumbnail">
+            <img data-property-image-preview="${key}"/>
+        </div>
+    </div>
+</div>
+
+<!-- VideoRead -->
+<div id="videoControlRead" type="text/x-jQuery-tmpl">
+    <!-- Defined in helper -->
+    <div class='videoContainer'>
+	    <div id="${key}" class='videoDiv'>
+            <div class='videoPlayButton' data-property-video-play-button="${key}"></div>
+                            
+            <video preload='none' data-property="${key}">
+                Your browser does not support the video tag.
+            </video>
+	    </div>
+    </div>
+</div>
+
+<!-- FileUpload -->
+<div id="fileUploadControl" type="text/x-jQuery-tmpl">
+    <div data-property-file-upload="${key}" class="${css.class}" style="${css.style}" data-provides="fileupload">         
+        <input type="hidden" name="${key}" data-property="${key}" maxlength="100000000"/>
+        <input type="hidden" name="${key}Name" data-property="${key}Name"/>
+        <input type="hidden" name="${key}Size" data-property="${key}Size"/>
+        <input type="hidden" name="${key}Type" data-property="${key}Type"/>
+        <span class="fileupload-filename"></span>
+        <span class="btn btn-file btn-black"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" name="${key}"/></span>
+        <span class="btn btn-file btn-black fileupload-exists" data-dismiss="fileupload">Remove</span>
+    </div>
+</div>
+
+<!-- FileRead -->
+<div id="fileControlRead" type="text/x-jQuery-tmpl">
+    <div class="${css.class}" style="${css.style}">    
+        <input type="hidden" name="${key}" data-property="${key}" maxlength="100000000"/>
+        <a data-property-file-filename="${key}" target="_blank"></a>
+    </div>
+</div>
+
+<!-- BigFileUpload -->
+<div id="bigFileUploadControl" type="text/x-jQuery-tmpl">
+    <div data-property-big-file-upload="${key}" class="${css.class}" style="${css.style}" data-provides="fileupload">         
+        <input type="hidden" name="${key}" data-property="${key}"/>
+        <span class="fileupload-filename bigfile"></span>
+        <span class="btn btn-file btn-black"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" name="${key}"/></span>
+        <span class="btn btn-file btn-black fileupload-exists" data-dismiss="fileupload">Remove</span>
+    </div>
+</div>
+
+<!-- Bool -->
+<div id="boolControl" type="text/x-jQuery-tmpl">
+    <input type="checkbox" id="${key}" data-property="${key}" class="${css.class}" style="${css.style}" />
+</div>
+
+<div id="boolControlRead" type="text/x-jQuery-tmpl">
+    <input type="checkbox" id="${key}" disabled="disabled" data-property="${key}" class="${css.class}" style="${css.style}" />
+</div>
+
+<!-- Radio -->
+<div id="radioControl" type="text/x-jQuery-tmpl">
+    <input type="radio" data-property="${key}" name="${key}" value="${value}" class="radioButton" style="text-align: left"/>
+</div>
+<div id="radioLabeledControl" type="text/x-jQuery-tmpl">
+    <input type="radio" data-property="${key}" name="${key}" value="${value}" class="radioButton" style="text-align: left"/> 
+    <label class="control-label" style='display:inline;float:none;width:auto' for="${key}"> ${localizedName} </label>
+</div>
+<div id="radioGroupControl" type="text/x-jQuery-tmpl">
+    {{each typeSpec}}
+        {{if disabled}}
+            <label for="${key}${value}" class="disabled">
+                <input type="radio" data-property="${key}" id="${key}${value}" disabled="disabled" name="${key}" value="${value}" class="radioButton" style="text-align: left" />
+                ${localizedName}
+            </label>
+        {{else}}
+            <label for="${key}${value}">
+                <input type="radio" data-property="${key}" id="${key}${value}" name="${key}" value="${value}" class="radioButton" style="text-align: left" />
+                ${localizedName}
+            </label>
+        {{/if}}
+        
+    {{/each}}    
+</div>
+
+<!-- Radio - previous obsolete version...
+<div id="radioLabel" type="text/x-jQuery-tmpl">
+    <label class="control-label" for='rb${value}'>
+        ${localizedName}:</label>
+</div>
+<div id="radioControl" type="text/x-jQuery-tmpl">
+    <input type="radio" id="rb${value}" name="${key}" value="${value}" >
+</div>
+-->
+
+<!-- Enum select -->
+<!-- obsolete
+<div id="enumControl" type="text/x-jQuery-tmpl">
+    <select id="${key}" style="display: block;">
+        {{each typeSpec}}
+        <option value="${$index}">${$value}</option>
+        {{/each}}
+    </select>
+</div>
+-->
+
+<!-- Entity -->
+<!-- obsolete
+<div id="entityControl" type="text/x-jQuery-tmpl">
+    <input type="text" class="entity-input input-medium" id="${key}" data-property="${key}"/>
+</div>
+<div id="entityControlNoType" type="text/x-jQuery-tmpl">
+    <span class="combobox-container"><input type="text" class="entity-input deleteIcon input-medium" id="${key}" data-property="${key}" readonly="readonly"/><a class="entityDeleteIco"><i class="icon-remove"></i></a></span>
+</div>
+-->
+
+
+<!-- Combobox controls variants: select/combobox controls -->
+<div id="selectControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <div class="input-append combobox">
+            <div class="btn">
+                <input type="text" data-property="${key}" readonly="readonly" />
+                <span class="input-group-btn">
+                    <span class="caret"></span>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div id="selectEmptyControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <div class="input-append">
+            <input type="text" class="combobox btn" data-property="${key}" readonly="readonly" />
+            <span class="input-group-btn">
+                <button class="btn" type="button" id="remove-combobox"><span class="icon-remove"></span></button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="selectMultiControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <div class="input-append">
+                <div class="btn combobox" data-property="${key}"></div>
+                <span class="input-group-btn">
+                    <button class="btn" type="button" id="remove-combobox"><span class="icon-remove"></span></button>
+                </span>
+        </div>
+        
+    </div>
+</div>
+
+<div id="selectMultiControlButton" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <button type="button" class="combobox btn btn-select">${localizedName} <span class="custom-caret"></span></button>
+        <div data-property="${key}" class="data"></div>
+    </div>
+</div>
+
+<div id="comboboxTagsControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <input type="text" class="combobox input-medium"></input>
+        <div class="tagsCombobox" data-property="${key}"></div>
+    </div>
+</div>
+
+<div id="comboboxTag" type="text/x-jQuery-tmpl">
+    <div class="myTag">
+        <span>${value}</span>
+        <span class="tagRemove icon-remove"></span>
+        <!--<a href="javascript:void(0)" class="tagRemove" title="Remove">x</a>-->
+    </div>
+</div>
+
+<div id="comboboxControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <input type="text" class="combobox input-medium" data-property="${key}"/>
+    </div>
+</div>
+
+<div id="comboboxEmptyControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <div class="input-append">
+            <input type="text" class="combobox" data-property="${key}" />
+            <span class="input-group-btn">
+                <button class="btn" type="button" id="remove-combobox"><span class="icon-remove"></span></button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="multiLevelMultiSelectControl" type="text/x-jQuery-tmpl">
+    <div class="multiselect ${css.class}" style="${css.style}">
+        <button type="button" class="btn btn-select btn-gray">${localizedName} <span class="custom-caret"></span>
+        </button>
+        <div id="selectedItems" data-property="${key}"></div>
+    </div>
+</div>

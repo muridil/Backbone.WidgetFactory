@@ -1,0 +1,9 @@
+{
+  "name": "WidgetFarm",
+  "description": "Widgeting framework based on backbone.js",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "latest"
+  }
+}

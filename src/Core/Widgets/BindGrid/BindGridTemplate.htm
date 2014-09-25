@@ -1,0 +1,241 @@
+﻿<!-- Validation -->
+<div id="validationMessage" type="text/x-jQuery-tmpl">
+    <div data-validation-message="${key}" class="${css.validationMessage_class}" style="${css.validationMessage_style}"></div>
+</div>
+
+
+<!-- Label (universal for all controls) -->
+<div id="label" type="text/x-jQuery-tmpl">
+    <label class="control-label" for="${key}" class="${css.label_class}" style="${css.label_style}">${localizedName}:</label>
+</div>
+
+<!-- Span (universal for all controls) -->
+<div id="span" type="text/x-jQuery-tmpl">
+    <span data-property="${key}" class="${css.class}" style="${css.style}"></span>
+</div>
+
+<!-- Input types -->
+<!-- String -->
+<div id="static" type="text/x-jQuery-tmpl">
+    <div data-property="${key}" class="${css.class}" style="${css.style}"></div>
+</div>
+<div id="stringControl" type="text/x-jQuery-tmpl">
+    <input type="text" data-property="${key}" class="${css.class}" style="${css.style}" />
+</div>
+<div id="stringControlRead" type="text/x-jQuery-tmpl">
+    <span data-property="${key}" class="${css.class}" style="${css.style}"></span>
+    <!-- todo: change to disabled input -->
+</div>
+
+<!-- Textarea -->
+<div id="textareaControl" type="text/x-jQuery-tmpl">
+    <textarea id="${key}" data-property="${key}" rows="3" cols="" class="${css.class}" style="${css.style}"></textarea>
+</div>
+
+<!-- Color -->
+<div id="colorControl" type="text/x-jQuery-tmpl">
+    <div class="colorContainer" class="${css.class}" style="${css.style}">
+        <input type="text" class="color" data-property="${key}" />
+        <div class="color_bottom"></div>
+    </div>
+</div>
+
+<!-- Date -->
+<div id="dateControl" type="text/x-jQuery-tmpl">
+    <input type="text" class="${css.class}" style="${css.style}" data-property="${key}" />
+</div>
+
+<!-- Int -->
+<div id="intControl" type="text/x-jQuery-tmpl">
+    <input type="number" class="${css.class}" style="${css.style}" min="{{if meta}}${meta.min}{{/if}}" max="{{if meta}}${meta.max}{{/if}}" data-property="${key}" />
+</div>
+<div id="intControlRead" type="text/x-jQuery-tmpl">
+    <span data-property="${key}" class="${css.class}" style="${css.style}"></span>
+</div>
+
+<!-- Double -->
+<div id="doubleControl" type="text/x-jQuery-tmpl"><input type="number" step="any" data-property="${key}" class="${css.class}" style="${css.style}" /></div>
+
+<!-- Bool -->
+<div id="boolControl" type="text/x-jQuery-tmpl">
+    <input type="checkbox" id="${key}" data-property="${key}" class="${css.class}" style="${css.style}" />
+</div>
+
+<div id="boolControlDisabled" type="text/x-jQuery-tmpl">
+    <input type="checkbox" data-property="${key}" class="${css.class}" style="${css.style}" disabled="disabled" />
+</div>
+
+<!-- Radio -->
+<div id="radioControl" type="text/x-jQuery-tmpl">
+    <input type="radio" data-property="${key}" name="${key}" value="${value}" class="${css.class}" style="${css.style}" />
+</div>
+<div id="radioLabeledControl" type="text/x-jQuery-tmpl">
+    <input type="radio" data-property="${key}" name="${key}" value="${value}" class="${css.class}" style="${css.style}" /> ${localizedName}
+</div>
+<div id="radioGroupControl" type="text/x-jQuery-tmpl">
+    {{each typeSpec}}
+    <input type="radio" data-property="${key}" name="${key}" value="${value}" class="${css.class}" style="${css.style}" />
+    ${localizedName} <br />
+    {{/each}}
+</div>
+
+<!-- Enum select -->
+<div id="enumControl" type="text/x-jQuery-tmpl">
+    <select data-property="${key}" class="${css.class}" style="${css.style}">
+        {{each typeSpec}}
+        <option value="${$index}">${$value}</option>
+        {{/each}}
+    </select>
+</div>
+
+<!-- EnumToClass-->
+<div id="classControl" type="text/x-jQuery-tmpl">
+    <div data-property="${key}" class="${css.class}" style="${css.style}"></div>
+</div>
+
+<!-- Entity -->
+<!-- obsolete:
+<div id="entityControl" type="text/x-jQuery-tmpl">
+    <input type="text" class="entity-input" data-property="${key}" style="${css.style}" />
+</div>
+-->
+<!-- ImageUpload -->
+<div id="imageUploadControl" type="text/x-jQuery-tmpl">
+    <div data-property-image-upload="${key}" class="${css.class}" style="${css.style}" data-provides="fileupload">
+        <input type="hidden" name="${key}" data-property="${key}" maxlength="100000000" />
+        <div class="fileupload-new thumbnail">
+        </div>
+        <div class="fileupload-preview fileupload-exists thumbnail">
+            <img data-property-image-preview="${key}" />
+        </div>
+        <span class="btn btn-file btn-black"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" name="${key}" /></span>
+        <span class="btn btn-file btn-black fileupload-exists" data-dismiss="fileupload">Remove</span>
+    </div>
+</div>
+
+<!-- ImageRead -->
+<div id="imageControlRead" type="text/x-jQuery-tmpl">
+    <div class="${css.class}" style="${css.style}">
+        <input type="hidden" name="${key}" data-property="${key}" maxlength="100000000" />
+        <div class="fileupload-preview fileupload-exists thumbnail">
+            <img data-property-image-preview="${key}" />
+        </div>
+    </div>
+</div>
+
+<!-- VideoRead -->
+<div id="videoControlRead" type="text/x-jQuery-tmpl">
+    <!-- Defined in helper -->
+</div>
+
+<!-- FileRead -->
+<div id="fileControlRead" type="text/x-jQuery-tmpl">
+    <div class="${css.class}" style="${css.style}">
+        <input type="hidden" name="${key}" data-property="${key}" maxlength="100000000" />
+        <a data-property-file-filename="${key}" target="_blank"></a>
+    </div>
+</div>
+
+<!-- ------------------------------------------------------------------- -->
+<!-- Combobox controls variants: select/combobox controls -->
+<div id="selectControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <input type="text" class="combobox input-medium" data-property="${key}" readonly="readonly" />
+    </div>
+</div>
+
+<div id="selectEmptyControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <input type="text" class="combobox input-medium" data-property="${key}" readonly="readonly" />
+        <a class="entityDeleteIco"><i class="icon-remove"></i></a>
+    </div>
+</div>
+
+
+<div id="comboboxTagsControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <input type="text" class="combobox input-medium"></input>
+        <div data-property="${key}"></div>
+    </div>
+</div>
+
+<div id="comboboxTag" type="text/x-jQuery-tmpl">
+    <div class="myTag">
+        <span>${value}</span>
+        <a href="javascript:void(0);" class="tagRemove" data-model-list-id="${id}" title="Remove">x</a>
+    </div>
+</div>
+
+<div id="selectMultiControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <button type="button" class="combobox btn btn-select">${localizedName} <span class="custom-caret"></span></button>
+        <div data-property="${key}"></div>
+    </div>
+</div>
+
+<div id="comboboxControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <input type="text" class="combobox input-medium" data-property="${key}" />
+    </div>
+</div>
+
+<div id="comboboxEmptyControl" type="text/x-jQuery-tmpl">
+    <div class="combobox-container" class="${css.class}" style="${css.style}">
+        <input type="text" class="combobox input-medium" data-property="${key}" />
+        <a class="entityDeleteIco"><i class="icon-remove"></i></a>
+    </div>
+</div>
+
+<div id="kendo_combobox" type="text/x-jQuery-tmpl">
+    <input type="text" data-property="${key}" />
+</div>
+
+<!-- ------------------------------------------------------------------- -->
+<!-- Button's control: -->
+<div id="buttonControl" type="text/x-jQuery-tmpl">
+    <input type="button" class="${css.class}" style="${css.style}" data-property="${key}" value="${id}" />
+</div>
+
+<div id="baseGrid" type="text/x-jQuery-tmpl">
+    <div class="gridTable">
+        <div class="gridCaption">
+            <div class="gridCaptionBtns">
+                <input type="button" class="btn btn-black btn-mini btnPagging" value="Stránkování">
+                <input type="button" class="btn btn-green btn-black btn-mini btnDynamicLoading" value="Dynamické načítání">
+            </div>
+            <div class="gridCaptionText"></div>
+
+        </div>
+        <div class="gridHeadings" style="display:table-header-group">
+            <div class="gridTr">
+                {{each data}}
+                <div class="gridTh">
+                    {{html localizedName}}
+                    {{if sortEnable}}
+                    <div class="sortBtns">
+                        <a class="btn btn-mini btnSort" data-meta-order-direction="1" data-meta-property-name="${propertyName}"><i class="icon-arrow-down"></i></a>
+                        <a class="btn btn-mini btnSort" data-meta-order-direction="0" data-meta-property-name="${propertyName}"><i class="icon-arrow-up"></i></a>
+                    </div>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="gridFooter">
+            <div class="gridCaptionBtns">
+                <input type="button" class="btn btn-black btn-mini btnPagging" value="Stránkování">
+                <input type="button" class="btn btn-green btn-black btn-mini btnDynamicLoading" value="Dynamické načítání">
+                <input type="button" id="btnFetchNextItems" class="btn btn-black btn-mini leftHugeGap" value="Načíst další záznamy">
+            </div>
+            <div class="gridCaptionText"></div>
+
+        </div>
+        <div id="gridNoData" class="alert alert-success text-center gridInfo">Nebyly nalezeny žádné záznamy.</div>
+        <div id="gridAllLoaded" class="alert alert-success text-center gridInfo">Všechny záznamy byly načteny.</div>
+        <div id="gridLoading" class="alert alert-success text-center gridInfo">Probíhá hledání...</div>
+        <div id="gridFetchError" class="alert alert-error text-center gridInfo">Načtení dat se nezdařilo.</div>
+    </div>
+
+
+
+</div>
